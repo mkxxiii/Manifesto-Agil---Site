@@ -3,9 +3,12 @@ const ImageControl = {
     
     start : function(){
         this.interval = setInterval(main, 5000);
+        this.interval = setInterval(changeRen, 500);
     },
 
-
+    furag: false,
+    furagsrc: null,
+    furagContainer: null,
     counter: 0,
     imgContainer : null,
 
@@ -29,16 +32,34 @@ const ImageControl = {
 
 
         this.imgContainer.setAttribute("src", "content/img/" + this.images[this.position]);
+    },
+
+    moveRen : function(){
+        if(this.furag){
+            this.furagsrc = "ren1.png";
+            this.furag = false;
+        }
+        else{
+            this.furagsrc = "ren2.png";
+            this.furag = true;
+        }
+
+        this.furagContainer.setAttribute("src", "content/img/" + this.furagsrc);
     }
 }
 
 function start(){
     ImageControl.imgContainer = document.getElementById("imgShw");
+    ImageControl.furagContainer = document.getElementById("sprFurag");
     ImageControl.start();    
 }
 
 function main(){
     ImageControl.moveImage();
+}
+
+function changeRen(){
+    ImageControl.moveRen();
 }
 
 function newTab(link){

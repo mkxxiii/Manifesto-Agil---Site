@@ -54,3 +54,8 @@ button:hover{
     background-color: darkcyan;
     cursor: pointer;
 }
+
+.sprite{
+    width: 5%;
+    height: 5%;
+}
